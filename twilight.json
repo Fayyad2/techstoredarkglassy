@@ -25,7 +25,16 @@
         "filters",
         "component-random-testimonials"
     ],
-    "settings": [
+    "settings":
+    [ {
+      "id": "colors",
+      "type": "group",
+      "label": "Theme colors",
+      "fields": [
+        { "id": "accent_color", "type": "color", "label": "Accent color", "default": "#00aaff" },
+        { "id": "bg_color", "type": "color", "label": "Background color", "default": "#0b0b0d" },
+        { "id": "glass_opacity", "type": "range", "label": "Glass opacity", "min":0, "max":1, "step":0.05, "default":0.6 },
+          
         {
             "type": "static",
             "format": "title",
