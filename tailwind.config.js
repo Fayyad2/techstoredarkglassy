@@ -33,7 +33,14 @@ module.exports = {
             colors             : {
                 'dark'         : '#1D1F1F',
                 'darker'       : '#0E0F0F',
-                'danger'       : '#AE0A0A'
+                'danger'       : '#AE0A0A',
+                'tech-cyan'    : '#00d4ff',
+                'tech-purple'  : '#8b5cf6', 
+                'tech-green'   : '#10b981',
+                'tech-orange'  : '#f59e0b',
+                'tech-red'     : '#ef4444',
+                'dark-surface' : '#1e1e2e',
+                'dark-elevated': '#2a2a3e'
             },
             spacing: {
               '3.75': '15px',

@@ -1,0 +1,42 @@
+{#
+| Variable                       | Type     | Description                                                                  |
+|--------------------------------|----------|------------------------------------------------------------------------------|
+| component                      | object   | Contains merchant settings for fields from twilight.json `component` section |
+| component.title                | ?string  | Section title                                                                |
+| component.categories           | object[] | Selected categories                                                          |
+| position                       | int      | Sorting number start from zero                                               |
+#}
+<section class="s-block container">
+    {% if component.title %}
+        <div class="s-block__title text-center">
+            <h2 class="text-3xl font-bold text-white mb-4">{{ component.title }}</h2>
+            <div class="w-24 h-1 bg-gradient-to-r from-tech-cyan to-tech-purple mx-auto rounded-full"></div>
+        </div>
+    {% endif %}
+
+    <div class="tech-categories__grid">
+        {% for category in component.categories %}
+            <a href="{{ category.url }}" class="tech-categories__card group">
+                <div class="tech-categories__card__icon">
+                    {% if category.image %}
+                        <img src="{{ category.image }}" 
+                             alt="{{ category.name }}" 
+                             class="w-16 h-16 object-cover rounded-lg mx-auto">
+                    {% else %}
+                        <i class="sicon-{{ category.icon|default('desktop') }}"></i>
+                    {% endif %}
+                </div>
+                
+                <h3 class="tech-categories__card__title">{{ category.name }}</h3>
+                
+                {% if category.products_count %}
+                    <p class="tech-categories__card__count">
+                        {{ category.products_count }} {{ trans('pages.products.products') }}
+                    </p>
+                {% endif %}
+                
+                <div class="absolute inset-0 bg-gradient-to-br from-tech-cyan/10 to-tech-purple/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-16"></div>
+            </a>
+        {% endfor %}
+    </div>
+</section>

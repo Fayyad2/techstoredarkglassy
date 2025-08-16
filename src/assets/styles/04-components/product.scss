@@ -2,6 +2,21 @@
 // Wishlist Product entry
 .product-entry {
   @apply h-full transition-shadow duration-300 bg-white hover:shadow-default rounded-lg justify-between flex relative;
+  
+  .dark-theme & {
+    background: var(--dark-surface);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    
+    &:hover {
+      box-shadow: var(--shadow-elevated);
+      border-color: var(--tech-cyan);
+      transform: translateY(-4px);
+    }
+    
+    .glass-effects-enabled & {
+      @extend .glass-card;
+    }
+  }
 
   &--wishlist {
     @apply justify-between p-4 flex-col sm:flex-row;

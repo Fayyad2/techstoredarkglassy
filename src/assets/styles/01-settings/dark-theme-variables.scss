@@ -1,0 +1,102 @@
+// Dark Theme Variables for PC Store
+:root {
+  // Base Dark Colors
+  --dark-bg-primary: #0a0a0f;
+  --dark-bg-secondary: #1a1a2e;
+  --dark-bg-tertiary: #16213e;
+  --dark-surface: #1e1e2e;
+  --dark-surface-elevated: #2a2a3e;
+  
+  // Tech Accent Colors
+  --tech-cyan: #00d4ff;
+  --tech-purple: #8b5cf6;
+  --tech-green: #10b981;
+  --tech-orange: #f59e0b;
+  --tech-red: #ef4444;
+  
+  // Text Colors
+  --text-primary-dark: #ffffff;
+  --text-secondary-dark: #a1a1aa;
+  --text-muted-dark: #71717a;
+  
+  // Glass Effects
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  --glass-backdrop: blur(12px);
+  
+  // Gradients
+  --gradient-primary: linear-gradient(135deg, var(--tech-cyan) 0%, var(--tech-purple) 100%);
+  --gradient-surface: linear-gradient(135deg, var(--dark-surface) 0%, var(--dark-surface-elevated) 100%);
+  --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+  
+  // Animations
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  
+  // Shadows
+  --shadow-glow: 0 0 20px rgba(0, 212, 255, 0.3);
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.4);
+  --shadow-elevated: 0 8px 40px rgba(0, 0, 0, 0.6);
+}
+
+// Dark Mode Classes
+.dark-theme {
+  background: var(--dark-bg-primary);
+  color: var(--text-primary-dark);
+  
+  // Override Tailwind colors for dark theme
+  --tw-bg-opacity: 1;
+  --tw-text-opacity: 1;
+}
+
+// Glass Morphism Utility Classes
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-backdrop);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+
+.glass-button {
+  background: var(--gradient-glass);
+  backdrop-filter: var(--glass-backdrop);
+  border: 1px solid var(--glass-border);
+  transition: var(--transition-smooth);
+  
+  &:hover {
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: var(--shadow-glow);
+    transform: translateY(-2px);
+  }
+}
+
+// Tech-specific color utilities
+.text-tech-cyan { color: var(--tech-cyan); }
+.text-tech-purple { color: var(--tech-purple); }
+.text-tech-green { color: var(--tech-green); }
+.bg-tech-cyan { background-color: var(--tech-cyan); }
+.bg-tech-purple { background-color: var(--tech-purple); }
+.bg-tech-green { background-color: var(--tech-green); }
+
+// Glow effects
+.glow-cyan {
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+}
+
+.glow-purple {
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
+}
+
+// Animated gradients
+.animated-gradient {
+  background: linear-gradient(-45deg, var(--tech-cyan), var(--tech-purple), var(--tech-green), var(--tech-orange));
+  background-size: 400% 400%;
+  animation: gradientShift 8s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}

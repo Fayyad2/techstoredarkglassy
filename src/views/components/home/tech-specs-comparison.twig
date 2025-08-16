@@ -1,0 +1,90 @@
+{#
+| Variable                       | Type     | Description                                                                  |
+|--------------------------------|----------|------------------------------------------------------------------------------|
+| component                      | object   | Contains merchant settings for fields from twilight.json `component` section |
+| component.title                | ?string  | Section title                                                                |
+| component.featured_products    | object[] | Products to compare                                                          |
+| position                       | int      | Sorting number start from zero                                               |
+#}
+<section class="s-block container">
+    {% if component.title %}
+        <div class="s-block__title text-center mb-12">
+            <h2 class="text-3xl font-bold text-white mb-4">{{ component.title }}</h2>
+            <div class="w-24 h-1 bg-gradient-to-r from-tech-cyan to-tech-purple mx-auto rounded-full"></div>
+        </div>
+    {% endif %}
+
+    {% if component.featured_products|length >= 2 %}
+        <div class="comparison-table">
+            <div class="comparison-table__header">
+                <div class="comparison-table__header-cell">
+                    <h4 class="text-tech-cyan">{{ trans('pages.products.specifications') }}</h4>
+                </div>
+                {% for product in component.featured_products|slice(0, 4) %}
+                    <div class="comparison-table__header-cell">
+                        <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                        <h4>{{ product.name|slice(0, 30) }}{% if product.name|length > 30 %}...{% endif %}</h4>
+                        <p class="text-tech-green font-bold">{{ product.price|money }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+            
+            {# Sample tech specifications - these would be dynamic based on product metadata #}
+            {% set tech_specs = [
+                {
+                    'label': trans('pages.products.brand'),
+                    'key': 'brand'
+                },
+                {
+                    'label': trans('pages.products.model'),
+                    'key': 'model'
+                },
+                {
+                    'label': 'GPU Memory',
+                    'key': 'gpu_memory'
+                },
+                {
+                    'label': 'Base Clock',
+                    'key': 'base_clock'
+                },
+                {
+                    'label': 'Boost Clock',
+                    'key': 'boost_clock'
+                },
+                {
+                    'label': 'Power Consumption',
+                    'key': 'power_consumption'
+                }
+            ] %}
+            
+            {% for spec in tech_specs %}
+                <div class="comparison-table__row">
+                    <div class="comparison-table__cell comparison-table__cell--label">
+                        {{ spec.label }}
+                    </div>
+                    {% for product in component.featured_products|slice(0, 4) %}
+                        <div class="comparison-table__cell comparison-table__cell--value">
+                            {# This would pull from product metadata/specifications #}
+                            {% if spec.key == 'brand' %}
+                                {{ product.brand.name|default('-') }}
+                            {% elseif spec.key == 'model' %}
+                                {{ product.sku|default('-') }}
+                            {% else %}
+                                {# Placeholder for dynamic specs #}
+                                <span class="text-tech-cyan">-</span>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
+        
+        <div class="text-center mt-8">
+            <salla-button href="{{ link('products') }}" 
+                          class="glass-button px-8 py-3 text-white font-semibold">
+                {{ trans('pages.products.compare_more') }}
+                <i class="sicon-compare ml-2"></i>
+            </salla-button>
+        </div>
+    {% endif %}
+</section>

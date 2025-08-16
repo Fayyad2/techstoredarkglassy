@@ -1,0 +1,58 @@
+{#
+| Variable                       | Type     | Description                                                                  |
+|--------------------------------|----------|------------------------------------------------------------------------------|
+| component                      | object   | Contains merchant settings for fields from twilight.json `component` section |
+| component.title                | ?string  | Section title                                                                |
+| component.setups               | object[] | Gaming setups collection                                                     |
+| position                       | int      | Sorting number start from zero                                               |
+#}
+<section class="s-block container">
+    {% if component.title %}
+        <div class="s-block__title text-center mb-12">
+            <h2 class="text-3xl font-bold text-white mb-4">{{ component.title }}</h2>
+            <div class="w-24 h-1 bg-gradient-to-r from-tech-cyan to-tech-purple mx-auto rounded-full"></div>
+        </div>
+    {% endif %}
+
+    <div class="gaming-setup__showcase">
+        {% for setup in component.setups %}
+            <div class="gaming-setup__card">
+                <img src="{{ setup.image }}" 
+                     alt="{{ setup.title }}" 
+                     class="gaming-setup__image">
+                
+                <div class="gaming-setup__overlay"></div>
+                
+                <div class="gaming-setup__content">
+                    <h3 class="gaming-setup__title">{{ setup.title }}</h3>
+                    
+                    {% if setup.description %}
+                        <p class="gaming-setup__specs">{{ setup.description }}</p>
+                    {% endif %}
+                    
+                    {% if setup.price %}
+                        <div class="gaming-setup__price">
+                            {{ trans('pages.products.starting_from') }} {{ setup.price|money }}
+                        </div>
+                    {% endif %}
+                    
+                    {% if setup.products|length %}
+                        <a href="#" 
+                           onclick="showSetupProducts({{ setup.products|json_encode }})"
+                           class="gaming-setup__cta">
+                            <span>{{ trans('pages.products.view_components') }}</span>
+                            <i class="sicon-arrow-right"></i>
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+
+<script>
+function showSetupProducts(products) {
+    // Implementation for showing setup products in a modal or expanding section
+    console.log('Setup products:', products);
+}
+</script>

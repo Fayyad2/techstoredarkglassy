@@ -1,0 +1,185 @@
+/* Dark Theme Overrides for Tech Store */
+
+/* Global Dark Theme Styles */
+.dark-theme {
+  background: var(--dark-bg-primary);
+  color: var(--text-primary-dark);
+}
+
+.dark-theme .container {
+  color: var(--text-primary-dark);
+}
+
+/* Header Dark Styles */
+.dark-theme .store-header {
+  background: var(--dark-surface);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark-theme .top-navbar {
+  background: var(--dark-bg-secondary);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.dark-theme .main-nav-container {
+  background: var(--dark-surface);
+}
+
+.glass-effects-enabled .dark-theme .main-nav-container {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-backdrop);
+}
+
+/* Navigation Dark Styles */
+.dark-theme .main-menu > li > a {
+  color: var(--text-secondary-dark);
+  transition: var(--transition-smooth);
+}
+
+.dark-theme .main-menu > li > a:hover {
+  color: var(--tech-cyan);
+}
+
+.dark-theme .sub-menu {
+  background: var(--dark-surface-elevated);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Product Cards Dark Styles */
+.dark-theme .s-product-card-entry {
+  background: var(--dark-surface);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: var(--transition-smooth);
+}
+
+.dark-theme .s-product-card-entry:hover {
+  border-color: var(--tech-cyan);
+  box-shadow: var(--shadow-elevated);
+  transform: translateY(-4px);
+}
+
+.glass-effects-enabled .dark-theme .s-product-card-entry {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-backdrop);
+}
+
+/* Buttons Dark Styles */
+.dark-theme .btn--primary {
+  background: var(--gradient-primary);
+  border: none;
+  color: white;
+}
+
+.dark-theme .btn--outline {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  color: var(--text-primary-dark);
+  backdrop-filter: var(--glass-backdrop);
+}
+
+.dark-theme .btn--outline:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--tech-cyan);
+}
+
+/* Footer Dark Styles */
+.dark-theme .store-footer {
+  background: var(--dark-bg-secondary);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark-theme .store-footer__inner {
+  background: var(--dark-surface);
+}
+
+/* Form Elements Dark Styles */
+.dark-theme .form-input,
+.dark-theme .form-control {
+  background: var(--dark-surface-elevated);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-primary-dark);
+}
+
+.dark-theme .form-input:focus,
+.dark-theme .form-control:focus {
+  border-color: var(--tech-cyan);
+  box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1);
+}
+
+/* Modal Dark Styles */
+.dark-theme .s-salla-modal-body {
+  background: var(--dark-surface);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-effects-enabled .dark-theme .s-salla-modal-body {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-backdrop);
+}
+
+/* Cart Dark Styles */
+.dark-theme .cart-item {
+  background: var(--dark-surface);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Search Dark Styles */
+.dark-theme .s-search-input {
+  background: var(--dark-surface-elevated);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-primary-dark);
+}
+
+.dark-theme .s-search-results {
+  background: var(--dark-surface);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Breadcrumbs Dark Styles */
+.dark-theme .breadcrumbs a {
+  color: var(--tech-cyan);
+}
+
+.dark-theme .breadcrumbs span {
+  color: var(--text-secondary-dark);
+}
+
+/* Loading States */
+.dark-theme .tech-loading__skeleton {
+  background: linear-gradient(90deg, var(--dark-surface) 25%, var(--dark-surface-elevated) 50%, var(--dark-surface) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* Responsive Dark Theme Adjustments */
+@media (max-width: 768px) {
+  .dark-theme .tech-hero {
+    min-height: 60vh;
+  }
+  
+  .dark-theme .tech-categories__grid {
+    gap: 1rem;
+  }
+  
+  .dark-theme .gaming-setup__showcase {
+    gap: 1.5rem;
+  }
+}
+
+/* High contrast mode for accessibility */
+@media (prefers-contrast: high) {
+  .dark-theme {
+    --text-primary-dark: #ffffff;
+    --text-secondary-dark: #e5e5e5;
+    --glass-border: rgba(255, 255, 255, 0.3);
+  }
+}
+
+/* Reduced motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .dark-theme * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

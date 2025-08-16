@@ -22,6 +22,20 @@
   },
   "common": {
     "bank_offer_sub_title_multiple": "ادفع قيمة مشترياتك عبر أحد البطاقات البنكة التالية واحصل على الخصم المحدد",
-    "bank_offer_sub_title_single": "ادفع قيمة مشترياتك عبر أحد بطاقات بنك :bank_name واحصل على خصم بنسبة "
+    "bank_offer_sub_title_single": "ادفع قيمة مشترياتك عبر أحد بطاقات بنك :bank_name واحصل على خصم بنسبة ",
+    "tech_store": {
+      "gaming_setup": "إعداد الألعاب",
+      "professional_setup": "إعداد احترافي", 
+      "budget_build": "تجميعة اقتصادية",
+      "premium_build": "تجميعة مميزة",
+      "compare_products": "مقارنة المنتجات",
+      "view_360": "عرض 360 درجة",
+      "tech_specs": "المواصفات التقنية",
+      "performance_category": "فئة الأداء",
+      "starting_from": "يبدأ من",
+      "view_components": "عرض المكونات",
+      "specifications": "المواصفات",
+      "compare_more": "مقارنة المزيد"
+    }
   }
 }

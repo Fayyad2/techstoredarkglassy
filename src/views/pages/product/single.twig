@@ -194,6 +194,13 @@
                 {% endif %}
 
                 <h1 class="text-xl md:text-2xl leading-10 font-bold mb-6 text-gray-800">{{ product.name }}</h1>
+                
+                {# Tech Store: Performance Badge #}
+                {% if theme.settings.get('performance_badges') and product.metadata %}
+                    <div class="performance-badge-container mb-4" data-product-type="{{ product.metadata.performance_category|default('') }}">
+                        {# Badge will be added via JavaScript #}
+                    </div>
+                {% endif %}
 
                 {% if product.subtitle %}
                     <h2 class="product-entry__sub-title text-sm text-gray-500 leading-6 mb-2.5">
@@ -254,6 +261,22 @@
 
                 <div class="flex rtl:space-x-reverse space-x-3">
                     <salla-social-share class="inline-flex mb-5" aria-label="social share"></salla-social-share>
+                    
+                    {# Tech Store: Comparison Button #}
+                    {% if theme.settings.get('product_comparison') %}
+                        <button class="btn--compare glass-button px-4 py-2 text-white font-semibold" 
+                                data-product-id="{{ product.id }}">
+                            <i class="sicon-compare"></i> مقارنة
+                        </button>
+                    {% endif %}
+                    
+                    {# Tech Store: 360 View Button #}
+                    {% if theme.settings.get('product_360_view') and product.has_360_images %}
+                        <button class="btn--360-view glass-button px-4 py-2 text-white font-semibold" 
+                                data-product-id="{{ product.id }}">
+                            <i class="sicon-360"></i> عرض 360°
+                        </button>
+                    {% endif %}
 
                     <salla-button
                             class="btn--wishlist animated hidden sm:inline-flex"

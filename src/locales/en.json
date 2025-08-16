@@ -22,6 +22,20 @@
   },
   "common": {
     "bank_offer_sub_title_multiple": "Pay for your purchases via one of the following bank cards and get the specified discount",
-    "bank_offer_sub_title_single": "Pay for your purchases via :bank_name bank card and get discount"
+    "bank_offer_sub_title_single": "Pay for your purchases via :bank_name bank card and get discount",
+    "tech_store": {
+      "gaming_setup": "Gaming Setup",
+      "professional_setup": "Professional Setup",
+      "budget_build": "Budget Build", 
+      "premium_build": "Premium Build",
+      "compare_products": "Compare Products",
+      "view_360": "360° View",
+      "tech_specs": "Tech Specifications",
+      "performance_category": "Performance Category",
+      "starting_from": "Starting from",
+      "view_components": "View Components",
+      "specifications": "Specifications",
+      "compare_more": "Compare More"
+    }
   }
 }

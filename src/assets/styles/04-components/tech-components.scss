@@ -1,0 +1,687 @@
+// Tech Store Specific Components
+
+// Tech Hero Section
+.tech-hero {
+  position: relative;
+  min-height: 80vh;
+  background: var(--dark-bg-primary);
+  overflow: hidden;
+  
+  &__background {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--dark-bg-primary) 0%, var(--dark-bg-secondary) 50%, var(--dark-bg-tertiary) 100%);
+    
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(0,212,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+      opacity: 0.3;
+    }
+  }
+  
+  &__content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    min-height: 80vh;
+    padding: 2rem;
+  }
+  
+  &__text {
+    max-width: 600px;
+    
+    h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    p {
+      font-size: 1.25rem;
+      color: var(--text-secondary-dark);
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+  }
+  
+  &__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 2rem;
+    background: var(--gradient-primary);
+    color: white;
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: 600;
+    transition: var(--transition-bounce);
+    box-shadow: var(--shadow-card);
+    
+    &:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: var(--shadow-elevated);
+    }
+  }
+  
+  &__particles {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--tech-cyan) 0%, transparent 70%);
+      opacity: 0.1;
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    &::before {
+      top: 10%;
+      right: 10%;
+      animation-delay: -2s;
+    }
+    
+    &::after {
+      bottom: 10%;
+      left: 10%;
+      background: radial-gradient(circle, var(--tech-purple) 0%, transparent 70%);
+      animation-delay: -4s;
+    }
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(180deg); }
+}
+
+// Tech Categories Grid
+.tech-categories {
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  
+  &__card {
+    position: relative;
+    padding: 2rem;
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-backdrop);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    text-align: center;
+    transition: var(--transition-smooth);
+    overflow: hidden;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--gradient-glass);
+      opacity: 0;
+      transition: var(--transition-smooth);
+    }
+    
+    &:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-elevated);
+      
+      &::before {
+        opacity: 1;
+      }
+      
+      .tech-categories__icon {
+        transform: scale(1.1) rotate(5deg);
+        color: var(--tech-cyan);
+      }
+    }
+    
+    &__icon {
+      position: relative;
+      z-index: 2;
+      font-size: 3rem;
+      color: var(--tech-purple);
+      margin-bottom: 1rem;
+      transition: var(--transition-bounce);
+    }
+    
+    &__title {
+      position: relative;
+      z-index: 2;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-primary-dark);
+      margin-bottom: 0.5rem;
+    }
+    
+    &__count {
+      position: relative;
+      z-index: 2;
+      color: var(--text-secondary-dark);
+      font-size: 0.875rem;
+    }
+  }
+}
+
+// Gaming Setup Showcase
+.gaming-setup {
+  &__showcase {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  
+  &__card {
+    position: relative;
+    background: var(--dark-surface);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: var(--transition-smooth);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    
+    &:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-elevated);
+      
+      .gaming-setup__image {
+        transform: scale(1.05);
+      }
+      
+      .gaming-setup__overlay {
+        opacity: 0.8;
+      }
+    }
+    
+    &__image {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      transition: var(--transition-smooth);
+    }
+    
+    &__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.8) 100%);
+      opacity: 0.6;
+      transition: var(--transition-smooth);
+    }
+    
+    &__content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 2rem;
+      color: white;
+      z-index: 2;
+    }
+    
+    &__title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    &__specs {
+      color: var(--text-secondary-dark);
+      margin-bottom: 1rem;
+      font-size: 0.875rem;
+    }
+    
+    &__price {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--tech-green);
+      margin-bottom: 1rem;
+    }
+    
+    &__cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      background: var(--glass-bg);
+      backdrop-filter: var(--glass-backdrop);
+      border: 1px solid var(--glass-border);
+      border-radius: 8px;
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition-smooth);
+      
+      &:hover {
+        background: rgba(255, 255, 255, 0.15);
+        transform: translateY(-2px);
+      }
+    }
+  }
+}
+
+// Tech Product Cards
+.tech-product-card {
+  background: var(--dark-surface);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: var(--transition-smooth);
+  position: relative;
+  
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-elevated);
+    border-color: var(--tech-cyan);
+    
+    .tech-product-card__image {
+      transform: scale(1.05);
+    }
+    
+    .tech-product-card__specs {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  &__image-container {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+    background: var(--dark-bg-secondary);
+  }
+  
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition-smooth);
+  }
+  
+  &__badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.5rem 1rem;
+    background: var(--gradient-primary);
+    color: white;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+  
+  &__content {
+    padding: 1.5rem;
+  }
+  
+  &__title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--text-primary-dark);
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+  }
+  
+  &__brand {
+    color: var(--tech-cyan);
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  
+  &__specs {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: var(--transition-smooth);
+    margin-bottom: 1rem;
+    
+    &-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.25rem 0;
+      font-size: 0.75rem;
+      color: var(--text-secondary-dark);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+  
+  &__price {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    
+    &-current {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--tech-green);
+    }
+    
+    &-original {
+      font-size: 1rem;
+      color: var(--text-muted-dark);
+      text-decoration: line-through;
+    }
+  }
+  
+  &__actions {
+    display: flex;
+    gap: 0.75rem;
+    
+    button {
+      flex: 1;
+      padding: 0.75rem;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      
+      &.primary {
+        background: var(--gradient-primary);
+        color: white;
+        
+        &:hover {
+          transform: translateY(-2px);
+          box-shadow: var(--shadow-glow);
+        }
+      }
+      
+      &.secondary {
+        background: var(--glass-bg);
+        backdrop-filter: var(--glass-backdrop);
+        border: 1px solid var(--glass-border);
+        color: var(--text-primary-dark);
+        
+        &:hover {
+          background: rgba(255, 255, 255, 0.1);
+        }
+      }
+    }
+  }
+}
+
+// Performance Badges
+.performance-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  
+  &--gaming {
+    background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+    color: white;
+  }
+  
+  &--professional {
+    background: linear-gradient(135deg, #4834d4, #686de0);
+    color: white;
+  }
+  
+  &--budget {
+    background: linear-gradient(135deg, #26de81, #20bf6b);
+    color: white;
+  }
+  
+  &--premium {
+    background: linear-gradient(135deg, #feca57, #ff9ff3);
+    color: #1a1a2e;
+  }
+}
+
+// Tech Specs Table
+.tech-specs {
+  background: var(--dark-surface);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  
+  &__header {
+    background: var(--gradient-primary);
+    padding: 1rem;
+    color: white;
+    font-weight: 700;
+    text-align: center;
+  }
+  
+  &__table {
+    width: 100%;
+    
+    tr {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      
+      &:last-child {
+        border-bottom: none;
+      }
+      
+      &:hover {
+        background: rgba(255, 255, 255, 0.02);
+      }
+    }
+    
+    td {
+      padding: 0.75rem 1rem;
+      
+      &:first-child {
+        color: var(--text-secondary-dark);
+        font-weight: 500;
+        width: 40%;
+      }
+      
+      &:last-child {
+        color: var(--text-primary-dark);
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+// Comparison Table
+.comparison-table {
+  background: var(--dark-surface);
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  
+  &__header {
+    display: grid;
+    grid-template-columns: 200px repeat(auto-fit, minmax(200px, 1fr));
+    background: var(--dark-bg-secondary);
+    
+    &-cell {
+      padding: 1.5rem 1rem;
+      text-align: center;
+      border-right: 1px solid rgba(255, 255, 255, 0.1);
+      
+      &:last-child {
+        border-right: none;
+      }
+      
+      img {
+        width: 80px;
+        height: 80px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin: 0 auto 0.5rem;
+      }
+      
+      h4 {
+        color: var(--text-primary-dark);
+        font-weight: 700;
+        font-size: 0.875rem;
+      }
+      
+      p {
+        color: var(--text-secondary-dark);
+        font-size: 0.75rem;
+        margin-top: 0.25rem;
+      }
+    }
+  }
+  
+  &__row {
+    display: grid;
+    grid-template-columns: 200px repeat(auto-fit, minmax(200px, 1fr));
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    
+    &:last-child {
+      border-bottom: none;
+    }
+    
+    &:hover {
+      background: rgba(255, 255, 255, 0.02);
+    }
+  }
+  
+  &__cell {
+    padding: 1rem;
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    align-items: center;
+    
+    &:last-child {
+      border-right: none;
+    }
+    
+    &--label {
+      background: var(--dark-bg-tertiary);
+      color: var(--text-secondary-dark);
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    
+    &--value {
+      color: var(--text-primary-dark);
+      font-weight: 500;
+      justify-content: center;
+      text-align: center;
+    }
+  }
+}
+
+// Animated Loading States
+.tech-loading {
+  &__skeleton {
+    background: linear-gradient(90deg, var(--dark-surface) 25%, var(--dark-surface-elevated) 50%, var(--dark-surface) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+    border-radius: 8px;
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+// Glitch Effect for Tech Branding
+.glitch-text {
+  position: relative;
+  color: var(--tech-cyan);
+  font-weight: 700;
+  
+  &::before,
+  &::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  &::before {
+    animation: glitch-1 0.5s infinite;
+    color: var(--tech-red);
+    z-index: -1;
+  }
+  
+  &::after {
+    animation: glitch-2 0.5s infinite;
+    color: var(--tech-purple);
+    z-index: -2;
+  }
+}
+
+@keyframes glitch-1 {
+  0%, 14%, 15%, 49%, 50%, 99%, 100% {
+    transform: translate(0);
+  }
+  15%, 49% {
+    transform: translate(-2px, 2px);
+  }
+}
+
+@keyframes glitch-2 {
+  0%, 20%, 21%, 62%, 63%, 99%, 100% {
+    transform: translate(0);
+  }
+  21%, 62% {
+    transform: translate(2px, -2px);
+  }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .tech-hero {
+    min-height: 60vh;
+    
+    &__content {
+      padding: 1rem;
+    }
+    
+    &__text h1 {
+      font-size: 2rem;
+    }
+  }
+  
+  .tech-categories__grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+  }
+  
+  .gaming-setup__showcase {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .comparison-table {
+    &__header,
+    &__row {
+      grid-template-columns: 150px repeat(auto-fit, minmax(150px, 1fr));
+    }
+    
+    &__header-cell,
+    &__cell {
+      padding: 0.75rem 0.5rem;
+    }
+  }
+}

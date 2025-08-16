@@ -65,6 +65,16 @@
 .main-nav-container {
   @apply min-h-[68px] lg:min-h-[84px];
   
+  .dark-theme & {
+    background: var(--dark-surface);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    
+    .glass-effects-enabled & {
+      background: var(--glass-bg);
+      backdrop-filter: var(--glass-backdrop);
+    }
+  }
+  
   // Custom background Color
   .has-bg &,
   .has-bg & .sub-menu{

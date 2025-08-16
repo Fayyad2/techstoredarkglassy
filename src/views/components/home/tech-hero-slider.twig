@@ -1,0 +1,63 @@
+{#
+| Variable                       | Type     | Description                                                                  |
+|--------------------------------|----------|------------------------------------------------------------------------------|
+| component                      | object   | Contains merchant settings for fields from twilight.json `component` section |
+| component.slides               | object[] | list of slides                                                               |
+| component.slides[].image       | string   | Image url                                                                    |
+| component.slides[].title       | ?string  |                                                                              |
+| component.slides[].subtitle    | ?string  |                                                                              |
+| component.slides[].cta_text    | ?string  |                                                                              |
+| component.slides[].cta_url     | ?string  |                                                                              |
+| position                       | int      | Sorting number start from zero                                               |
+#}
+<section class="tech-hero s-block--full-bg">
+    <salla-slider 
+        id="tech-hero-slider-{{ position }}"
+        auto-play
+        auto-height
+        type="fullwidth"
+        slider-config='{
+            "effect": "fade",
+            "speed": 1000,
+            "autoplay": {
+                "delay": 5000,
+                "disableOnInteraction": false
+            }
+        }'>
+        <div slot="items">
+            {% for slide in component.slides %}
+                <div class="swiper-slide tech-hero">
+                    <div class="tech-hero__background">
+                        <img src="{{ slide.image }}" 
+                             alt="{{ slide.title }}" 
+                             class="absolute inset-0 w-full h-full object-cover opacity-30">
+                    </div>
+                    <div class="tech-hero__particles"></div>
+                    
+                    <div class="tech-hero__content container">
+                        <div class="tech-hero__text">
+                            {% if slide.title %}
+                                <h1 data-swiper-parallax="-300" class="glitch-text" data-text="{{ slide.title }}">
+                                    {{ slide.title }}
+                                </h1>
+                            {% endif %}
+                            
+                            {% if slide.subtitle %}
+                                <p data-swiper-parallax="-200">{{ slide.subtitle }}</p>
+                            {% endif %}
+                            
+                            {% if slide.cta_text and slide.cta_url %}
+                                <a href="{{ slide.cta_url }}" 
+                                   data-swiper-parallax="-100"
+                                   class="tech-hero__cta">
+                                    <span>{{ slide.cta_text }}</span>
+                                    <i class="sicon-arrow-right"></i>
+                                </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </salla-slider>
+</section>
